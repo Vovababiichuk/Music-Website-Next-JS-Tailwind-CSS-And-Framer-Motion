@@ -41,3 +41,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 <!--  npm i json-server -g -->
 
 <!-- npm i swr swiper tailwind-scrollbar react-icons react-parallax-mouse react-responsive react-type-animation react-scroll react-audio-playframer-motion -->
+
+<!--  json-server --watch --port 4000 ./_data/db.json -->

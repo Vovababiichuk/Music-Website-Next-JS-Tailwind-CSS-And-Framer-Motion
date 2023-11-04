@@ -9,7 +9,7 @@ const alexBrush = Alex_Brush({
 })
 
 const montserrat = Montserrat({
-  weight: ['100, 200, 300, 400, 500, 600, 700, 800, 900'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
   variable: '--font-montserrat',
   display: 'swap',
@@ -23,7 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${alexBrush.variable} ${montserrat.variable}`}>{children}</body>
+      <body className={`${alexBrush.variable} ${montserrat.variable}
+        overflow-x-hidden relative
+      `}>
+        {children}</body>
     </html>
   )
 }
