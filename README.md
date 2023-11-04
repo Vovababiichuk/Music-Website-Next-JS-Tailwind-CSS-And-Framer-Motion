@@ -39,3 +39,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 <!-- https://www.youtube.com/watch?v=2WGbEMz_1K8&t=17s -->
 
 <!--  npm i json-server -g -->
+
+<!-- npm i swr swiper tailwind-scrollbar react-icons react-parallax-mouse react-responsive react-type-animation react-scroll react-audio-playframer-motion -->
