@@ -22,16 +22,48 @@ export const Hero = () => {
 				<div className='h-full flex flex-col justify-center items-center xl:items-start z-20 pt-12'>
 					<MouseParallaxContainer globalFactorX={0.1} globalFactorY={0.2} resetOnLeave className='relative flex items-center p-[120px] xl:h-max xl:w-[840px]'>
 						<MouseParallaxChild factorX={0.2} factorY={0.4} className='relative'>
-							<div className='w-[300px] h-[101.37px] xl:w-[725] xl:h-[244.97px] relative'>
+							<motion.div
+								variants={fadeIn('up', 0.4)}
+								initial='hidden'
+								whileInView={"show"}
+								viewport={{ once: false, amount: 0.3 }}
+								className='w-[300px] h-[101.37px] xl:w-[725px] xl:h-[244.97px] relative'>
 								<Image src={'/assets/hero/typo-1.svg'} priority fill alt='' className='object-contain' />
-							</div>
+							</motion.div>
+						</MouseParallaxChild>
+						<MouseParallaxChild factorX={0.9} factorY={0.9} className='absolute xl:left-6 z-30'>
+							<motion.div
+								variants={fadeIn('up', 0.4)}
+								initial='hidden'
+								whileInView={"show"}
+								viewport={{ once: false, amount: 0.3 }}
+								className='w-[300px] h-[101.37px] xl:w-[625px] xl:h-[244.97px] relative'>
+								<Image src={'/assets/hero/typo-2.svg'} priority fill alt='' className='object-contain' />
+							</motion.div>
+						</MouseParallaxChild>
+						<MouseParallaxChild factorX={0.3} factorY={0.6} className='hidden xl:flex absolute right-0 z-20 opacity-80'>
+							<motion.div
+								variants={fadeIn('left', 1.4)}
+								initial='hidden'
+								whileInView={"show"}
+								viewport={{ once: false, amount: 0.3 }}
+								className='w-[150px] h-[100px] xl:w-[248px] xl:h-[200px] mix-blend-luminosity relative'>
+								<Image src={'/assets/hero/bird.png'} priority fill alt='' className='object-contain' />
+							</motion.div>
 						</MouseParallaxChild>
 					</MouseParallaxContainer>
+
+					
 				</div>
 				{/* image */}
-				<div className='hidden xl:flex absolute right-0 top-0 before:w-[784px] before:h-[893px] before:absolute before:right-0 before:top-0 before:bg-singerOverlay before:z-10'>
+				<motion.div
+					variants={fadeIn('left', 0.2)}
+					initial='hidden'
+					whileInView={"show"}
+					viewport={{ once: false, amount: 0.7 }}
+					className='hidden xl:flex absolute right-0 top-0 before:w-[784px] before:h-[893px] before:absolute before:right-0 before:top-0 before:bg-singerOverlay before:z-10'>
 					<Image src={'/assets/hero/singer.png'} width={617} height={893} priority quality={100} alt='' />
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	)
