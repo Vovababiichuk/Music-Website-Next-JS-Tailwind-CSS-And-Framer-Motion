@@ -80,7 +80,8 @@ export const Hero = () => {
 							speed={10}
 							deletionSpeed={10}
 							repeat={Infinity}
-							cursor={false} />
+							cursor={false}
+							/>
 					</motion.div>
 
 				<motion.div
