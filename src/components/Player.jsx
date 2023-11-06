@@ -20,7 +20,7 @@ export const Player = () => {
 				<div className="hidden w-[300px] xl:flex items-center gap-x-4">
 					{/* avatar img */}
 					<div className="relative w-16 h-16">
-						<Image src={'/assets/player/avatar.png'} fill alt='' priority quality={100} className='object-contain' />
+						<Image src={'/assets/player/avatar.png'} fill alt='' priority quality={100} sizes="(100vw - 100px)" className='object-contain' />
 					</div>
 					{/* text */}
 					<div className="leading-none text-white">
