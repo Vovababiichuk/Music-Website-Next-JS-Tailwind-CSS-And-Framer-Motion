@@ -52,12 +52,21 @@ export const Hero = () => {
 							</motion.div>
 						</MouseParallaxChild>
 					</MouseParallaxContainer>
-
-					<div className='min-h-[60px] flex items-center mb-6'>
+					<motion.div
+						variants={fadeIn('up', 1)}
+						initial='hidden'
+						whileInView={"show"}
+						viewport={{ once: false, amount: 0.7 }}
+						className='min-h-[60px] flex items-center mb-6 text-[26px]'
+						>
 						<div className='hidden xl:flex items-center xl:gap-x-0'>
 							<div>World</div>
 							<div className='relative w-2 h-2 mx-2 flex items-center justify-center'>
-								<Image src={'/assets/hero/dot.svg'} fill alt=''/>
+								<Image src={'/assets/hero/dot.svg'} fill alt='' />
+							</div>
+							<span>Tour</span>
+							<div className='relative w-2 h-2 mx-2 flex items-center justify-center'>
+								<Image src={'/assets/hero/dot.svg'} fill alt='' />
 							</div>
 						</div>
 						{/* icon */}
@@ -72,7 +81,16 @@ export const Hero = () => {
 							deletionSpeed={10}
 							repeat={Infinity}
 							cursor={false} />
-					</div>
+					</motion.div>
+
+				<motion.div
+					variants={fadeIn('up', 1.3)}
+					initial='hidden'
+					whileInView={"show"}
+					viewport={{ once: false, amount: 0.7 }}
+				>
+					<button className='btn btn-lg btn-accent'>Get tickets</button>
+				</motion.div>
 
 				</div>
 				{/* image */}
