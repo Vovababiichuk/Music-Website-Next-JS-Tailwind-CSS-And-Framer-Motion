@@ -3,19 +3,19 @@ import { RiYoutubeFill, RiInstagramFill, RiSpotifyFill, RiSoundcloudFill } from 
 
 const socials = [
 	{
-		path: '#',
+		path: 'https://www.youtube.com/',
 		icon: <RiYoutubeFill/>
 	},
 	{
-		path: '#',
+		path: 'https://www.instagram.com/',
 		icon: <RiInstagramFill/>
 	},
 	{
-		path: '#',
+		path: 'https://open.spotify.com/',
 		icon: <RiSpotifyFill/>
 	},
 	{
-		path: '#',
+		path: 'https://soundcloud.com/',
 		icon: <RiSoundcloudFill/>
 	}
 ]
@@ -24,7 +24,7 @@ export const Socials = ({ containerStyles, iconStyles }) => {
 	return (
 		<div className={`${containerStyles}`}>
 			{socials.map((social, index) => (
-				<Link key={index} href={social.path}>
+				<Link key={index} href={social.path} target='_blank'>
 					<div className={`${iconStyles}`}>{social.icon}</div>
 				</Link>
 			))}
