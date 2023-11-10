@@ -18,6 +18,8 @@ import 'swiper/css/pagination';
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export const AlbumSlider = () => {
+	const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
 	const { data, error } = useSWR('http://localhost:4000/albums', fetcher)
 	console.log(data);
 
@@ -27,15 +29,30 @@ export const AlbumSlider = () => {
 	return (
 		<>
 			{/* top slider */}
-			<Swiper className='album-slider'>
+			<Swiper
+				effect='coverflow'
+				speed={1000}
+				spaceBetween={80}
+				allowTouchMove={true}
+				thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+				modules={[EffectCoverflow, FreeMode, Navigation, Thumbs]}
+				coverflowEffect={{
+					rotate: 50,
+					stretch: 0,
+					depth: 100,
+					modifier: 1,
+					slideShadows: true,
+				}}
+
+				className='album-slider'>
 				{data && data.map((album) => {
 					console.log(album)
 					return (
 						<SwiperSlide key={album.id} className='mb-12'>
 							<div className='bg-secondary/80 rounded-[10px] flex items-center p-6 xl:p-12 gap-x-16'>
 								{/* img */}
-								<div className='hidden xl:block w-[300px] h-[300px] xl:w-[900px] xl:h-[460px] relative cursor-grab rounded-[10px] overflow-hidden'>
-									<Image src={album.img} fill priority quality={100} sizes={100} alt='' className="object-cover" />
+								<div className='hidden xl:block w-[300px] h-[300px] xl:w-[900px] xl:h-[460px] relative cursor-pointer rounded-[10px] overflow-hidden'>
+									<Image src={album.img} fill priority quality={100} sizes={100} alt='' className="object-cover hover:scale-105 transition-all duration-300" />
 								</div>
 								{/* track container */}
 								<div className='w-full'>
@@ -70,7 +87,52 @@ export const AlbumSlider = () => {
 				})}
 			</Swiper>
 			{/* thumb slider */}
-			<Swiper>thumb slider</Swiper>
+			<Swiper
+				onSwiper={setThumbsSwiper}
+				breakpoints={{
+					320: {
+						slidesPerView: 2,
+						spaceBetween: 10,
+					},
+					425: {
+						slidesPerView: 2,
+						spaceBetween: 30,
+					},
+					768: {
+						slidesPerView: 3,
+						spaceBetween: 30,
+					},
+					1024: {
+						slidesPerView: 4,
+						spaceBetween: 30,
+					},
+					1310: {
+						slidesPerView: 5,
+						spaceBetween: 30,
+					}
+				}}
+				modules={[FreeMode, Navigation, Thumbs]}
+				spaceBetween={70}
+				slidesPerView={5}
+				freeMode={true}
+				watchSlidesProgress={true}
+				className='thumb-slider cursor-pointer'
+			>
+				{
+					data?.map((thumb, index) => {
+						return (
+							<SwiperSlide key={index} className='relative group overflow-hidden border-2 border-transparent w-[254px] rounded-[10px]'>
+								{/* img */}
+								<div className='relative w-[195px] h-[195px] sm:w-[360px] sm:h-[360px] md:w-[240px] md:max-h-[240px] cursor-pointer'>
+									<Image src={thumb.img} fill priority quality={100} sizes={100} alt='' 
+									className="object-contain group-hover:scale-105 transition-all duration-300" />
+								</div>
+							</SwiperSlide>
+						)
+					})
+				}
+
+			</Swiper>
 		</>
 	)
 }
