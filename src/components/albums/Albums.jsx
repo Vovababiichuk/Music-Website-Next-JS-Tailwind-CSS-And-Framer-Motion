@@ -6,7 +6,11 @@ import { fadeIn } from "../../../variants";
 
 import { SectionHeader } from "../events/SectionHeader";
 
+import { AlbumsData } from "../../../public/data/albums";
+
 export const Albums = () => {
+	const albums = AlbumsData;
+
 	return (
 		<section id='discography'>
 			<div className="container mx-auto">
@@ -18,7 +22,7 @@ export const Albums = () => {
 					whileInView={"show"}
 					viewport={{ once: false, amount: 0.3 }}
 				>
-					<AlbumSlider />
+					<AlbumSlider albums={albums} />
 				</motion.div>
 			</div>
 		</section>

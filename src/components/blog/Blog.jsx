@@ -1,15 +1,10 @@
 import { SectionHeader } from "../events/SectionHeader"
 import { PostList } from "./PostList"
 
-const getPosts = async () => {
-	const res = await fetch(' http://localhost:4000/posts')
-	return res.json();
-}
-
+import { PostsData } from "../../../public/data/posts"
 
 export const Blog = async () => {
-	const posts = await getPosts();
-	console.log(posts)
+	const posts = PostsData;
 
 	return (
 		<section className="section" id='blog'>

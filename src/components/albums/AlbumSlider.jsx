@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import useSWR from 'swr';
 import Image from 'next/image';
 
 import { AudioPlayer } from 'react-audio-play';
@@ -14,17 +13,8 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-// fetcher
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-export const AlbumSlider = () => {
+export const AlbumSlider = ({ albums }) => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-	const { data, error } = useSWR('http://localhost:4000/albums', fetcher)
-	console.log(data);
-
-	if (error) return 'Failed to fetch data';
-	if (!data) return 'Loading...';
 
 	return (
 		<>
@@ -45,7 +35,7 @@ export const AlbumSlider = () => {
 				}}
 
 				className='album-slider'>
-				{data && data.map((album) => {
+				{albums && albums.map((album) => {
 					console.log(album)
 					return (
 						<SwiperSlide key={album.id} className='mb-12'>
@@ -119,7 +109,7 @@ export const AlbumSlider = () => {
 				className='thumb-slider cursor-pointer'
 			>
 				{
-					data?.map((thumb, index) => {
+					albums?.map((thumb, index) => {
 						return (
 							<SwiperSlide key={index} className='relative group overflow-hidden border-2 border-transparent w-[254px] rounded-[10px]'>
 								{/* img */}
