@@ -19,7 +19,11 @@ export const Newsletter = () => {
 					/>
 					{/* input */}
 					<motion.div
-					
+						variants={fadeIn('up', 0.4)}
+						initial='hidden'
+						whileInView={'show'}
+						viewport={{ once: false, amount: 0.3 }}
+
 					className="relative flex items-center w-full max-w-xl"
 					>
 						<input type='text' placeholder='Email address' className="w-full h-[64px] outline-none rounded-full bg-primary/60 backdrop-blur-[15px] px-8" />
